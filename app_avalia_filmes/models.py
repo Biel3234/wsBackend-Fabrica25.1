@@ -14,18 +14,9 @@ class Filmes(models.Model):
     titulo = models.CharField(max_length=150)
     genero = models.CharField(max_length=40)
     ano = models.CharField(max_length=4)
+    nota = models.DecimalField(decimal_places=1, max_digits=3)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, to_field='email_usuario')
+    
     
     def __str__(self):
         return f"Filme: {self.titulo}"
-
-    
-class Avaliacao(models.Model):
-    
-    
-    filme = models.ForeignKey(Filmes, on_delete=models.CASCADE)
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, to_field='email_usuario') 
-    avaliacao = models.TextField()
-    
-    def __str__(self):
-        return f"{self.filme.titulo}' avaliado pelo usuario {self.usuario.nome_usuario}"

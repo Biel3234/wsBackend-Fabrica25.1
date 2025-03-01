@@ -21,13 +21,15 @@ class FilmeForm(forms.ModelForm):
     class Meta:
         model = Filmes
         
-        fields=['titulo', 'usuario']
+        fields=['titulo', 'usuario', 'nota']
         
         label={
             'titulo': 'Titulo do Filme',
+            'nota': 'Nota de 0 a 10',
             'usuario': 'Usuario',
         }
         widgets={
             'titulo': forms.TextInput(attrs={'class': 'form-control'}),
+            'nota': forms.NumberInput(attrs={'class': 'form-control'}),
             'usuario': forms.TextInput(attrs={'class': 'form-control'}),
         }

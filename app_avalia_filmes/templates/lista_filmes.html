@@ -12,6 +12,7 @@
             <th>Titulo do Filme</th>
             <th>Ano de Lançamento</th>
             <th>Genero</th>
+            <th>Nota</th>
             <th>Cadastrado pelo usuario</th>
             <th></th>
             
@@ -21,7 +22,10 @@
             <td>{{ filme.titulo }}</td>
             <td>{{ filme.ano }}</td>
             <td>{{ filme.genero }}</td>
-            <td>{{ filme.usuario.nome_usuario }}    
+            <td>{{ filme.nota }} </td>
+            <td>{{ filme.usuario.nome_usuario }} </td>
+            
+
     
             <td><a href="{% url 'avaliador:deletar_filme' filme.pk %}"><button>Deletar</button></a></td>
         </tr>

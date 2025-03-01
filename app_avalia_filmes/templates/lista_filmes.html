@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+    <h1>Lista de Usuários</h1>
+    <table>
+    <ul>
+        {% for filme in filmes %}
+            <li>{{ filme.titulo }} - {{ filme.genero }} {{ filme.ano }} - {{ filme.usuario.nome_usuario }} 
+                <a href="{% url 'avaliador:deletar_filme' filme.pk %}"><button>Deletar</button></a>
+                <a href="{% url 'avaliador:atualizar_filme' filme.pk %}"><button>Editar</button></a>
+            </li>
+            <br>
+        {% empty %}
+        <li>Nenhum usuário cadastrado.
+        <a href="{% url 'avaliador:criar_filme' %}"><button>Cadastrar Novo Filme</button></a>   
+        </li>
+        {% endfor %}
+        <a href="{% url 'avaliador:criar_filme' %}"><button>Cadastrar Novo Filme</button></a>   
+    </ul>
+    </table>
+</body>
+</html>

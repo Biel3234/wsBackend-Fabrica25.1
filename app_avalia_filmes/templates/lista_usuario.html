@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+    <h1>Lista de Usuários</h1>
+    <table>
+        <tr>
+            <th>Nome do Usuario</th>
+            <th>Email do Usuario</th>
+        </tr>
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{ usuario.nome_usuario }}</td>
+            <td>{{ usuario.email_usuario }}     <a href="{% url 'avaliador:deletar' usuario.pk %}"><button>Deletar</button></a>
+                                                <a href="{% url 'avaliador:atualizar' usuario.pk %}"><button>Editar</button></a></td>
+        </tr>
+        {% empty %}
+        <li>Nenhum usuário cadastrado.</li> 
+        <br>
+       
+        
+        {% endfor %}
+        
+    </table>
+    <br><br>
+    <a href="{% url 'avaliador:criar' %}"><button>Cadastrar Novo Usuario</button></a>
+</body>
+</html>

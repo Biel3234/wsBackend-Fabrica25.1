@@ -26,7 +26,7 @@ def buscador(titulo):
         return {
             "titulo": dados.get("Title"),
             "genero": dados.get("Genre"),
-            "ano": dados.get("Year")
+            "ano": dados.get("Year"),
         }
 
 

@@ -17,8 +17,20 @@ def usuario_sucesso(request):
 def deletar_sucesso(request):
     return render(request, 'sucesso_deleta_usuario.html')
 
-# CRUD para usuarios
+def buscador(titulo):
+    url = f"http://www.omdbapi.com/?apikey=89efe44c&t={titulo}"
+    buscar = requests.get(url)
+    dados = buscar.json()
 
+    if dados.get('Response') == 'True':
+        return {
+            "titulo": dados.get("Title"),
+            "genero": dados.get("Genre"),
+            "ano": dados.get("Year")
+        }
+        
+        
+# CRUD para Usuarios.
 
 class CriaUsuario(CreateView):
     model = Usuario
@@ -56,18 +68,32 @@ class AtualizarUsuario(UpdateView):
 
 class CriaFilme(CreateView):
     model = Filmes
+   
     
     form_class = FilmeForm
     template_name = 'cria_filmes.html'
     context_object_name = 'CriaFilme'
-    success_url = reverse_lazy('avaliador:sucesso')
+    success_url = reverse_lazy('avaliador:listar_filme')
     
+    def buscar_filmes(self, form):
+        titulo = form.cleaned_data['titulo']
+        dados_filme = buscador(titulo)
+        if dados_filme:
+            form.instance.titulo = dados_filme['titulo']
+            form.instance.genero = dados_filme["genero"]
+            form.instance.ano = dados_filme["ano"]
+    def form_valid(self, form):
+        self.buscar_filmes(form)
+
+        if form.is_valid():
+            return super().form_valid(form)
+
     
 class ListarFilmes(ListView):
     model = Filmes
     
     template_name = ('lista_filmes.html')
-    context_object_name = 'filmes'
+    context_object_name = 'filmes' 
     
 class DeletaFilmes(DeleteView):
     model = Filmes
@@ -83,11 +109,3 @@ class AtualizarFilmes(UpdateView):
     context_object_name = 'filmes'
     template_name = 'atualizar_filmes.html'
     success_url = reverse_lazy('avaliador:listar_filme')
-    
-class BuscarFilmes(View):
-    def buscador(request):
-        buscar = requests.get("http://www.omdbapi.com/?apikey=[yourkey]&")
-
-
-
-

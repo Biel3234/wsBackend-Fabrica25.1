@@ -11,7 +11,6 @@ urlpatterns = [
     path('atualizar/<int:pk>', AtualizarUsuario.as_view(), name='atualizar'),
     
     path('criar_filme/', CriaFilme.as_view() , name='criar_filme'),
-    # path('sucesso/', usuario_sucesso, name='sucesso'),
     path('listar_filme/', ListarFilmes.as_view(), name='listar_filme'),
     path('deletar_filme/<int:pk>', DeletaFilmes.as_view(), name='deletar_filme'),
     path('atualizar_filme/<int:pk>', AtualizarFilmes.as_view(), name='atualizar_filme'),

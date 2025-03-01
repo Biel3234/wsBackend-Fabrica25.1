@@ -6,22 +6,29 @@
     <title>Lista de Usuarios</title>
 </head>
 <body>
-    <h1>Lista de Usuários</h1>
+    <h1>Lista de Filmes Cadastrado por Usuarios</h1>
     <table>
-    <ul>
+        <tr>
+            <th>Titulo do Filme</th>
+            <th>Ano de Lançamento</th>
+            <th>Genero</th>
+            <th>Cadastrado pelo usuario</th>
+            <th></th>
+            
+        </tr>
+        <tr>
         {% for filme in filmes %}
-            <li>{{ filme.titulo }} - {{ filme.genero }} {{ filme.ano }} - {{ filme.usuario.nome_usuario }} 
-                <a href="{% url 'avaliador:deletar_filme' filme.pk %}"><button>Deletar</button></a>
-                <a href="{% url 'avaliador:atualizar_filme' filme.pk %}"><button>Editar</button></a>
-            </li>
-            <br>
+            <td>{{ filme.titulo }}</td>
+            <td>{{ filme.ano }}</td>
+            <td>{{ filme.genero }}</td>
+            <td>{{ filme.usuario.nome_usuario }}    
+    
+            <td><a href="{% url 'avaliador:deletar_filme' filme.pk %}"><button>Deletar</button></a></td>
+        </tr>
         {% empty %}
-        <li>Nenhum usuário cadastrado.
-        <a href="{% url 'avaliador:criar_filme' %}"><button>Cadastrar Novo Filme</button></a>   
-        </li>
-        {% endfor %}
-        <a href="{% url 'avaliador:criar_filme' %}"><button>Cadastrar Novo Filme</button></a>   
-    </ul>
+        <li>Nenhum usuário cadastrado. </li>
+        {% endfor %}  
     </table>
+    <a href="{% url 'avaliador:criar_filme' %}"><button>Cadastrar Novo Filme</button></a> 
 </body>
 </html>

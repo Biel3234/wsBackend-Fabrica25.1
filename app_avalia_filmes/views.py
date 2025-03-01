@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from .forms import *
 from .models import *
 
-from django.views.generic import CreateView, DeleteView, ListView, UpdateView, View
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView, View, TemplateView
 
 import requests
 
@@ -28,7 +28,10 @@ def buscador(titulo):
             "genero": dados.get("Genre"),
             "ano": dados.get("Year")
         }
-        
+
+
+class Home(TemplateView):
+    template_name='home.html'
         
 # CRUD para Usuarios.
 

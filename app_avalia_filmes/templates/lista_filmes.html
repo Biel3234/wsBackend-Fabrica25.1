@@ -6,33 +6,41 @@
     <title>Lista de Usuarios</title>
 </head>
 <body>
+<div style="text-align: center;">
     <h1>Lista de Filmes Cadastrado por Usuarios</h1>
-    <table>
+    <table style="margin: auto; border: 1px solid;">
         <tr>
-            <th>Titulo do Filme</th>
-            <th>Ano de Lançamento</th>
-            <th>Genero</th>
-            <th>Nota</th>
-            <th>Cadastrado pelo usuario</th>
-            <th></th>
+            <th style="border: 1px solid;">Titulo do Filme</th>
+            <th style="border: 1px solid;">Ano de Lançamento</th>
+            <th style="border: 1px solid;">Genero</th>
+            <th style="border: 1px solid;">Nota</th>
+            <th style="border: 1px solid;">Cadastrado pelo usuario</th>
+            <th style="border: 1px solid;">Opções</th>
             
         </tr>
         <tr>
         {% for filme in filmes %}
-            <td>{{ filme.titulo }}</td>
-            <td>{{ filme.ano }}</td>
-            <td>{{ filme.genero }}</td>
-            <td>{{ filme.nota }} </td>
-            <td>{{ filme.usuario.nome_usuario }} </td>
+            <td style="border: 1px solid;">{{ filme.titulo }}</td>
+            <td style="border: 1px solid;">{{ filme.ano }}</td>
+            <td style="border: 1px solid;">{{ filme.genero }}</td>
+            <td style="border: 1px solid;">{{ filme.nota }} </td>
+            <td style="border: 1px solid;">{{ filme.usuario.nome_usuario }} </td>
             
 
     
-            <td><a href="{% url 'avaliador:deletar_filme' filme.pk %}"><button>Deletar</button></a></td>
+            <td style="border: 1px solid;"><a href="{% url 'avaliador:deletar_filme' filme.pk %}"><button>Deletar</button></a></td>
         </tr>
         {% empty %}
         <li>Nenhum usuário cadastrado. </li>
         {% endfor %}  
     </table>
-    <a href="{% url 'avaliador:criar_filme' %}"><button>Cadastrar Novo Filme</button></a> 
+    <br><br>
+    <a href="{% url 'avaliador:criar_filme' %}"><button>Cadastrar Novo Filme</button></a>
+    <br><br>
+    <a href="{% url 'avaliador:listar' %}"><button>Lista de Usuarios</button></a>
+    <br><br>
+    <a href="{% url 'avaliador:home' %}"><button>Voltar</button></a>
+    
+</div>
 </body>
 </html>

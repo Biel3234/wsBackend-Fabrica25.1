@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Inicial</title>
+    <link rel="stylesheet" type="home" href="stylesheet.css" media="screen"/>
+</head>
+<body>
+<div style="text-align: center;">
+    <h1>Bem Vindo!!!!</h1>
+    <p>Bem vindo ao projeto que fiz para o desafio da fabrica,</p>
+    <p>eu fiz um avaliador de filmes, onde você cadastra o usuario 
+    <p>e com seu usuario voce pode cadastrar o filme e lhe dar a nota</p>
+    <h3>Inicie</h3>
+    <a href="{% url 'avaliador:criar' %}"><button style="padding: 30px;">Cadastrar Usuario</button></a>
+    
+    <a href="{% url 'avaliador:listar' %}"><button style="padding: 30px;">Lista de Usuarios</button></a>
+    <br><br>
+    <a href="{% url 'avaliador:criar_filme' %}"><button style="padding: 30px;">Cadastrar Novo Filme</button></a>
+    
+    <a href="{% url 'avaliador:listar_filme' %}"><button style="padding: 30px;">Lista de Filmes</button></a>
+</div>
+
+
+
+
+</body>
+</html>

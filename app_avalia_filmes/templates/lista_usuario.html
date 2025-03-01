@@ -6,17 +6,21 @@
     <title>Lista de Usuarios</title>
 </head>
 <body>
+<div style="text-align: center;">
     <h1>Lista de Usuários</h1>
-    <table>
+    <table style="margin: auto; border: 2px solid;">
         <tr>
-            <th>Nome do Usuario</th>
-            <th>Email do Usuario</th>
+            <th style="border: 1px solid;">Nome do Usuario</th>
+            <th style="border: 1px solid;">Email do Usuario</th>
+            <th style="border: 1px solid;">Opções</th>
         </tr>
         {% for usuario in usuarios %}
         <tr>
-            <td>{{ usuario.nome_usuario }}</td>
-            <td>{{ usuario.email_usuario }}     <a href="{% url 'avaliador:deletar' usuario.pk %}"><button>Deletar</button></a>
-                                                <a href="{% url 'avaliador:atualizar' usuario.pk %}"><button>Editar</button></a></td>
+            <td style="border: 1px solid;">{{ usuario.nome_usuario }}</td>
+            <td style="border: 1px solid;">{{ usuario.email_usuario }} </td>
+
+            <td style="border: 1px solid;"><a href="{% url 'avaliador:deletar' usuario.pk %}"><button>Deletar</button></a>
+                <a href="{% url 'avaliador:atualizar' usuario.pk %}"><button>Editar</button></a></td>
         </tr>
         {% empty %}
         <li>Nenhum usuário cadastrado.</li> 
@@ -28,5 +32,10 @@
     </table>
     <br><br>
     <a href="{% url 'avaliador:criar' %}"><button>Cadastrar Novo Usuario</button></a>
+    <br><br>
+    <a href="{% url 'avaliador:listar_filme' %}"><button>Cadastrar Novo Filme</button></a>
+    <br><br>
+    <a href="{% url 'avaliador:home' %}"><button>Voltar</button></a>
+</div>
 </body>
 </html>

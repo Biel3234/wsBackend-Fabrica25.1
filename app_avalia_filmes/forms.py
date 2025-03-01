@@ -7,7 +7,7 @@ class UsuarioForm(forms.ModelForm):
         
         fields=['nome_usuario', 'email_usuario']
         
-        label={
+        labels={
             'nome_usuario': 'Nome do Usuario',
             'email_usuario': 'Email do Usuario',
         }
@@ -23,10 +23,10 @@ class FilmeForm(forms.ModelForm):
         
         fields=['titulo', 'usuario', 'nota']
         
-        label={
+        labels={
             'titulo': 'Titulo do Filme',
             'nota': 'Nota de 0 a 10',
-            'usuario': 'Usuario',
+            'usuario': 'Email do Usuario',
         }
         widgets={
             'titulo': forms.TextInput(attrs={'class': 'form-control'}),
